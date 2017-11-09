@@ -3,6 +3,14 @@ defmodule EvenFibonacciNumbers do
 
   @default_maxnumber 4000000
 
+  @doc ~S"""
+  EvenFibonacciNumbers.
+
+  ## Examples
+    # default
+    iex> EvenFibonacciNumbers.run
+    4613732
+  """
   def run(max \\ @default_maxnumber) do
     _fib_stream()
     |> Enum.take_while(fn(x) -> x < max end)
