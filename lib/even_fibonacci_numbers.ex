@@ -1,7 +1,7 @@
 defmodule EvenFibonacciNumbers do
   require Integer
 
-  @default_maxnumber 4000000
+  @default_maxnumber 4_000_000
 
   @doc ~S"""
   EvenFibonacciNumbers.
