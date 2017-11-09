@@ -27,7 +27,7 @@ defmodule EvenFibonacciNumbers do
   end
 
   defp _fib_stream do
-    Stream.iterate({1, 1}, &({ elem(&1, 1), elem(&1, 0) + elem(&1, 1)}))
+    Stream.iterate({1, 1}, &({elem(&1, 1), elem(&1, 0) + elem(&1, 1)}))
     |> Stream.map(&(elem(&1, 0)))
   end
 end
