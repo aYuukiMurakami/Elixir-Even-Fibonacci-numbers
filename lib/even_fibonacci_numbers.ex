@@ -23,7 +23,7 @@ defmodule EvenFibonacciNumbers do
   def run(max \\ @default_maxnumber) when is_integer(max) do
     _fib_stream()
     |> Enum.take_while(fn(x) -> x < max end)
-    |> Enum.filter(fn(x) -> Integer.is_even(x) end)
+    |> Enum.filter(&Integer.is_even/1)
     |> Enum.sum
   end
 
