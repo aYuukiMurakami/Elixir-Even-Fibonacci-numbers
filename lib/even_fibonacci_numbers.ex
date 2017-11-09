@@ -1,4 +1,4 @@
-defmodule EvenFibonacchiNumbers do
+defmodule EvenFibonacciNumbers do
   require Integer
 
   @maxnumber 4000000
