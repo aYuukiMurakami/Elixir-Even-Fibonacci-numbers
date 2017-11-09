@@ -1,19 +1,16 @@
 defmodule EvenFibonacchiNumbers do
   import Integer
-  
+
   @maxnumber 4000000
 
   def run do
-    _run(0, 1, 0, [true, false])
+    _fib_stream
+    |> Enum.take_while(fn(x) -> x < @maxnumber end)
+    |> Enum.filter(fn(x) -> is_even(x) end)
+    |> Enum.sum
   end
 
-  defp _run(_, _, sum, [false, _]), do: sum
-  defp _run(n, m, sum, [true, false]) do
-    fib = n+m
-    _run(m, fib, sum, [@maxnumber > fib, is_even(fib+m)])
-  end
-  defp _run(n, m, sum, [true, _]) do
-    fib = n+m
-    _run(m, fib, sum+fib, [@maxnumber > fib, is_even(fib+m)])
+  defp _fib_stream do
+    Stream.iterate({1, 1},&({ elem(&1, 1), elem(&1, 0) + elem(&1, 1)})) |> Stream.map(&(elem(&1,0)))
   end
 end
