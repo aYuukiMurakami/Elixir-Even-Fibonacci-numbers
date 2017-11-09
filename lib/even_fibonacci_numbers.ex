@@ -19,7 +19,8 @@ defmodule EvenFibonacciNumbers do
     iex> EvenFibonacciNumbers.run(-40)
     0
   """
-  def run(max \\ @default_maxnumber) do
+  @spec run(integer) :: integer
+  def run(max \\ @default_maxnumber) when is_integer(max) do
     _fib_stream()
     |> Enum.take_while(fn(x) -> x < max end)
     |> Enum.filter(fn(x) -> Integer.is_even(x) end)
