@@ -10,6 +10,14 @@ defmodule EvenFibonacciNumbers do
     # default
     iex> EvenFibonacciNumbers.run
     4613732
+
+    # maxnumber value:40
+    iex> EvenFibonacciNumbers.run(40)
+    44
+
+    # maxnumber value:-40
+    iex> EvenFibonacciNumbers.run(-40)
+    0
   """
   def run(max \\ @default_maxnumber) do
     _fib_stream()
