@@ -1,11 +1,11 @@
 defmodule EvenFibonacciNumbers do
   require Integer
 
-  @maxnumber 4000000
+  @default_maxnumber 4000000
 
-  def run do
+  def run(max \\ @default_maxnumber) do
     _fib_stream()
-    |> Enum.take_while(fn(x) -> _is_max(x) end)
+    |> Enum.take_while(fn(x) -> x < max end)
     |> Enum.filter(fn(x) -> Integer.is_even(x) end)
     |> Enum.sum
   end
@@ -13,9 +13,5 @@ defmodule EvenFibonacciNumbers do
   defp _fib_stream do
     Stream.iterate({1, 1}, &({ elem(&1, 1), elem(&1, 0) + elem(&1, 1)}))
     |> Stream.map(&(elem(&1, 0)))
-  end
-
-  defp _is_max x do
-    x < @maxnumber
   end
 end
